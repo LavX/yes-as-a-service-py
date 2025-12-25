@@ -72,14 +72,60 @@ PORT=5000 python main.py
 
 ---
 
+## 🐳 Docker
+
+### Using Pre-built Image from GHCR
+
+The Docker image is automatically built and pushed to GitHub Container Registry on every push to main branch.
+
+```bash
+docker pull ghcr.io/lavx/no-as-a-service-py:latest
+docker run -p 3000:3000 -e PORT=3000 ghcr.io/lavx/no-as-a-service-py:latest
+```
+
+### Building Locally
+
+```bash
+docker build -t no-as-a-service-py .
+docker run -p 3000:3000 -e PORT=3000 no-as-a-service-py
+```
+
+### Docker Compose
+
+Create a `docker-compose.yml`:
+
+```yaml
+version: '3.8'
+services:
+  naas:
+    image: ghcr.io/lavx/no-as-a-service-py:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    restart: unless-stopped
+```
+
+Then run:
+
+```bash
+docker-compose up -d
+```
+
+---
+
 ## 📁 Project Structure
 
 ```
 no-as-service-py/
-├── main.py             # FastAPI application
-├── reasons.json        # 1000+ universal rejection reasons
-├── requirements.txt    # Python dependencies
-├── .devcontainer.json  # VS Code / Github devcontainer setup
+├── main.py                      # FastAPI application
+├── reasons.json                 # 1000+ universal rejection reasons
+├── requirements.txt             # Python dependencies
+├── Dockerfile                   # Docker image definition
+├── .devcontainer.json           # VS Code / Github devcontainer setup
+├── .github/
+│   └── workflows/
+│       └── docker-release.yml    # GitHub Actions workflow for GHCR
 └── README.md
 ```
 
