@@ -1,5 +1,5 @@
 // API Configuration - use relative URL for same-origin requests
-const API_BASE_URL = '/no';
+const API_BASE_URL = '/yes';
 
 // DOM Elements
 const themeToggle = document.getElementById('themeToggle');

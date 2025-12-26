@@ -1,16 +1,17 @@
-# ❌ No-as-a-Service (Python)
+# ✅ Yes-as-a-Service (Python)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hotheadhacker/no-as-a-service/main/assets/imgs/naas-with-no-logo-bunny.png" width="800" alt="No-as-a-Service Banner" width="70%"/>
+  <img src="https://raw.githubusercontent.com/hotheadhacker/no-as-a-service/main/assets/imgs/naas-with-no-logo-bunny.png" width="800" alt="Yes-as-a-Service Banner" width="70%"/>
 </p>
 
 
-Ever needed a graceful way to say "no"?  
-This tiny API returns random, generic, creative, and sometimes hilarious rejection reasons ,  perfectly suited for any scenario: personal, professional, student life, dev life, or just because.
+Ever needed a graceful way to say "yes"?  
+This tiny API returns random, generic, creative, and sometimes hilarious affirmations, perfectly suited for any scenario: personal, professional, student life, dev life, or just because.
 
-Built for humans, excuses, and humor.
+Built for humans, affirmations, and humor.
 
-**This is a Python port of the original [no-as-a-service](https://github.com/hotheadhacker/no-as-a-service) project.**
+**Inspired by the original [no-as-a-service](https://github.com/hotheadhacker/no-as-a-service) project.**
+**This is a wrapper of [no-as-a-service-py](https://github.com/LavX/no-as-a-service-py).**
 
 ---
 
@@ -18,7 +19,7 @@ Built for humans, excuses, and humor.
 
 **Base URL**
 ```
-http://localhost:3000/no
+http://localhost:3000/yes
 ```
 
 **Method:** `GET`  
@@ -26,17 +27,17 @@ http://localhost:3000/no
 
 ### 🔄 Example Request
 ```http
-GET /no
+GET /yes
 ```
 
 ### ✅ Example Response
 ```json
 {
-  "reason": "This feels like something Future Me would yell at Present Me for agreeing to."
+  "reason": "Absolutely! I'd love to help with that."
 }
 ```
 
-Use it in apps, bots, landing pages, Slack integrations, rejection letters, or wherever you need a polite (or witty) no.
+Use it in apps, bots, landing pages, Slack integrations, acceptance letters, or wherever you need a polite (or witty) yes.
 
 ---
 
@@ -62,7 +63,7 @@ python main.py
 
 The API will be live at:
 ```
-http://localhost:3000/no
+http://localhost:3000/yes
 ```
 
 You can also change the port using an environment variable:
@@ -79,15 +80,15 @@ PORT=5000 python main.py
 The Docker image is automatically built and pushed to GitHub Container Registry on every push to main branch.
 
 ```bash
-docker pull ghcr.io/lavx/no-as-a-service-py:latest
-docker run -p 3000:3000 -e PORT=3000 ghcr.io/lavx/no-as-a-service-py:latest
+docker pull ghcr.io/lavx/yes-as-a-service-py:latest
+docker run -p 3000:3000 -e PORT=3000 ghcr.io/lavx/yes-as-a-service-py:latest
 ```
 
 ### Building Locally
 
 ```bash
-docker build -t no-as-a-service-py .
-docker run -p 3000:3000 -e PORT=3000 no-as-a-service-py
+docker build -t yes-as-a-service-py .
+docker run -p 3000:3000 -e PORT=3000 yes-as-a-service-py
 ```
 
 ### Docker Compose
@@ -97,8 +98,8 @@ Create a `docker-compose.yml`:
 ```yaml
 version: '3.8'
 services:
-  naas:
-    image: ghcr.io/lavx/no-as-a-service-py:latest
+  yaas:
+    image: ghcr.io/lavx/yes-as-a-service-py:latest
     ports:
       - "3000:3000"
     environment:
@@ -117,9 +118,9 @@ docker-compose up -d
 ## 📁 Project Structure
 
 ```
-no-as-service-py/
+yes-as-service-py/
 ├── main.py                      # FastAPI application
-├── reasons.json                 # 1000+ universal rejection reasons
+├── reasons.json                 # 1000+ universal affirmations
 ├── requirements.txt             # Python dependencies
 ├── Dockerfile                   # Docker image definition
 ├── .devcontainer.json           # VS Code / Github devcontainer setup
@@ -155,15 +156,15 @@ If you open this repo in Github Codespaces, it will automatically use `.devconta
 
 ---
 
-## 👤 Original Author
+## 👤 Inspiration
 
-Original Node.js version created with creative stubbornness by [hotheadhacker](https://github.com/hotheadhacker)
+Inspired by the original Node.js version created by [hotheadhacker](https://github.com/hotheadhacker)
 
 ---
 
 ## 🌐 About the Maintainer
 
-This fork is maintained by **LavX**. Explore more of my projects and services:
+This project is maintained by **LavX**. Explore more of my projects and services:
 
 ### 🚀 Services
 - **[LavX Managed Systems](https://lavx.hu)** – Enterprise AI solutions, RAG systems, and LLMOps.
@@ -181,4 +182,4 @@ This fork is maintained by **LavX**. Explore more of my projects and services:
 ---
 ## 📄 License
 
-MIT ,  do whatever, just don't say yes when you should say no.
+MIT, do whatever, just don't say no when you should say yes.

@@ -39,10 +39,10 @@ limiter = Limiter(key_func=get_client_ip)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-@app.get('/no')
+@app.get('/yes')
 @limiter.limit("120/minute")
 async def get_random_reason(request: Request):
-    """Return a random rejection reason."""
+    """Return a random affirmation."""
     reason = random.choice(reasons)
     return {"reason": reason}
 
@@ -60,5 +60,5 @@ app.mount("/", StaticFiles(directory="./ui", html=True), name="ui")
 if __name__ == '__main__':
     import uvicorn
     port = int(os.environ.get('PORT', 3000))
-    print(f"No-as-a-Service is running on port {port}")
+    print(f"Yes-as-a-Service is running on port {port}")
     uvicorn.run(app, host='0.0.0.0', port=port)
