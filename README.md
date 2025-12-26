@@ -1,7 +1,7 @@
 # ✅ Yes-as-a-Service (Python)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hotheadhacker/no-as-a-service/main/assets/imgs/naas-with-no-logo-bunny.png" width="800" alt="Yes-as-a-Service Banner" width="70%"/>
+  <img src="assets/imgs/screenshot.png" width="800" alt="Yes-as-a-Service Banner" width="70%"/>
 </p>
 
 
