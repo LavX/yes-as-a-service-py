@@ -26,7 +26,7 @@ EXPOSE 3000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:3000/no').read()" || exit 1
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:3000/yes').read()" || exit 1
 
 # Run the application
 CMD ["python", "main.py"]
