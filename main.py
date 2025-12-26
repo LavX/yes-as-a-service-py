@@ -2,12 +2,23 @@ import json
 import os
 import random
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load reasons from JSON file
 def load_reasons():
@@ -42,6 +53,9 @@ async def rate_limit_exceeded_handler(request: Request, exc: RateLimitExceeded):
         status_code=429,
         content={"error": "Too many requests, please try again later. (120 reqs/min/IP)"}
     )
+
+# Mount static files for UI (must be after API routes)
+app.mount("/", StaticFiles(directory="./ui", html=True), name="ui")
 
 if __name__ == '__main__':
     import uvicorn

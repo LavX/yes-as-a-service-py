@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No-as-a-Service</title>
+    <link rel="icon" href="icon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@0.562.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+    <div class="notification-container" id="notificationContainer"></div>
+    <div class="background">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img src="icon.svg" alt="Logo" class="logo-img">
+                <span class="logo-text">No-as-a-Service</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i data-lucide="sun"></i>
+                <i data-lucide="moon"></i>
+            </button>
+        </header>
+
+        <main class="main">
+            <section class="hero">
+                <div class="badge">1000+ Creative Rejections</div>
+                <h1 class="hero-title">
+                    Say "No" with
+                    <span class="gradient-text">Style</span>
+                </h1>
+                <p class="hero-description">
+                    Get random, creative, and sometimes hilarious rejection reasons. 
+                    Perfect for any scenario where you need a graceful way to decline.
+                </p>
+                
+                <button class="cta-button" id="triggerBtn">
+                    <span class="btn-content">
+                        <span class="btn-text">Get a "No"</span>
+                        <i data-lucide="arrow-right"></i>
+                    </span>
+                    <div class="btn-glow"></div>
+                </button>
+
+                <div class="result-card" id="resultCard">
+                    <div class="result-header">
+                        <div class="result-icon">💬</div>
+                        <span class="result-label">Your Rejection</span>
+                    </div>
+                    <div class="result-content">
+                        <div class="result-placeholder">Click button above to get a creative rejection reason...</div>
+                        <div class="result-text" id="resultText"></div>
+                        <button class="copy-btn" id="copyBtn" style="display: none;">
+                            <i data-lucide="copy"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="status" id="status"></div>
+            </section>
+
+            <section class="api-section">
+                <div class="section-header">
+                    <h2 class="section-title">API Documentation</h2>
+                    <p class="section-subtitle">Integrate No-as-a-Service into your applications with ease</p>
+                </div>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header" data-accordion="endpoint">
+                            <span class="accordion-icon">
+                                <i data-lucide="terminal"></i>
+                            </span>
+                            <div class="accordion-title">
+                                <span class="method-badge get">GET</span>
+                                <span>Endpoint</span>
+                                <code class="endpoint">/no</code>
+                            </div>
+                            <i data-lucide="chevron-down" class="accordion-chevron"></i>
+                        </button>
+                        <div class="accordion-content" id="endpoint-content">
+                            <div class="accordion-content-inner">
+                                <p class="accordion-desc">Returns a random, high-quality rejection reason in JSON format.</p>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span>Response Body</span>
+                                        <button class="copy-code-btn" data-code='{"reason": "This feels like something Future Me would yell at Present Me for agreeing to."}'>
+                                            <i data-lucide="copy"></i>
+                                        </button>
+                                    </div>
+                                    <pre><code>{
+  "reason": "This feels like something Future Me would yell at Present Me for agreeing to."
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" data-accordion="rate">
+                            <span class="accordion-icon">
+                                <i data-lucide="zap"></i>
+                            </span>
+                            <div class="accordion-title">
+                                <span class="method-badge info">INFO</span>
+                                <span>Rate Limiting</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="accordion-chevron"></i>
+                        </button>
+                        <div class="accordion-content" id="rate-content">
+                            <div class="accordion-content-inner">
+                                <p class="accordion-desc">We keep it fair for everyone. Here are the limits:</p>
+                                <div class="rate-limit-info">
+                                    <div class="rate-item">
+                                        <span class="rate-label">Requests</span>
+                                        <span class="rate-value">120 per minute</span>
+                                    </div>
+                                    <div class="rate-item">
+                                        <span class="rate-label">Scope</span>
+                                        <span class="rate-value">Per IP Address</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" data-accordion="error">
+                            <span class="accordion-icon">
+                                <i data-lucide="shield-alert"></i>
+                            </span>
+                            <div class="accordion-title">
+                                <span class="method-badge error">429</span>
+                                <span>Error Handling</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="accordion-chevron"></i>
+                        </button>
+                        <div class="accordion-content" id="error-content">
+                            <div class="accordion-content-inner">
+                                <p class="accordion-desc">When you're too eager to say no, you'll get this response:</p>
+                                <div class="code-block">
+                                    <div class="code-header">
+                                        <span>Error Response</span>
+                                        <button class="copy-code-btn" data-code='{"error": "Too many requests, please try again later. (120 reqs/min/IP)"}'>
+                                            <i data-lucide="copy"></i>
+                                        </button>
+                                    </div>
+                                    <pre><code>{
+  "error": "Too many requests, please try again later. (120 reqs/min/IP)"
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button class="accordion-header" data-accordion="examples">
+                            <span class="accordion-icon">
+                                <i data-lucide="rocket"></i>
+                            </span>
+                            <div class="accordion-title">
+                                <span class="method-badge example">EXAMPLES</span>
+                                <span>Quick Start</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="accordion-chevron"></i>
+                        </button>
+                        <div class="accordion-content" id="examples-content">
+                            <div class="accordion-content-inner">
+                                <p class="accordion-desc">Get up and running in seconds with these snippets:</p>
+                                <div class="examples-grid">
+                                    <div class="example-item">
+                                        <div class="code-block">
+                                            <div class="code-header">
+                                                <span>cURL</span>
+                                                <button class="copy-code-btn" data-code="curl https://no.lavx.hu/no">
+                                                    <i data-lucide="copy"></i>
+                                                </button>
+                                            </div>
+                                            <pre><code>curl https://no.lavx.hu/no</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="example-item">
+                                        <div class="code-block">
+                                            <div class="code-header">
+                                                <span>JavaScript</span>
+                                                <button class="copy-code-btn" data-code="fetch('https://no.lavx.hu/no').then(r => r.json()).then(d => console.log(d.reason));">
+                                                    <i data-lucide="copy"></i>
+                                                </button>
+                                            </div>
+                                            <pre><code>fetch('https://no.lavx.hu/no')
+  .then(r => r.json())
+  .then(d => console.log(d.reason));</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="example-item">
+                                        <div class="code-block">
+                                            <div class="code-header">
+                                                <span>Python</span>
+                                                <button class="copy-code-btn" data-code="import requests; r = requests.get('https://no.lavx.hu/no'); print(r.json()['reason'])">
+                                                    <i data-lucide="copy"></i>
+                                                </button>
+                                            </div>
+                                            <pre><code>import requests
+r = requests.get('https://no.lavx.hu/no')
+print(r.json()['reason'])</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <p class="footer-text">Built for humans, excuses, and humor.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/LavX/no-as-a-service-py" target="_blank" rel="noopener" class="footer-link">
+                        <i data-lucide="github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://lavx.hu" target="_blank" rel="noopener" class="footer-link">
+                        <i data-lucide="external-link"></i>
+                        LavX
+                    </a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

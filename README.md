@@ -6,7 +6,7 @@
 
 
 Ever needed a graceful way to say "no"?  
-This tiny API returns random, generic, creative, and sometimes hilarious rejection reasons — perfectly suited for any scenario: personal, professional, student life, dev life, or just because.
+This tiny API returns random, generic, creative, and sometimes hilarious rejection reasons ,  perfectly suited for any scenario: personal, professional, student life, dev life, or just because.
 
 Built for humans, excuses, and humor.
 
@@ -181,4 +181,4 @@ This fork is maintained by **LavX**. Explore more of my projects and services:
 ---
 ## 📄 License
 
-MIT — do whatever, just don't say yes when you should say no.
+MIT ,  do whatever, just don't say yes when you should say no.
